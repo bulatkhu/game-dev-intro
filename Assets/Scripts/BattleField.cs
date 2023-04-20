@@ -66,12 +66,12 @@ public class BattleField : MonoBehaviour {
     void HandleSpecialAttack() {
         if (Input.GetKeyUp(KeyCode.Alpha4)) {
             if (dragonCharge == false) {
-                if (Random.value <= 0.8f) {
-                    dragonHP -= Random.Range(3, 5);
-                    Debug.Log("You hit the dragon with your special attack! It has " + dragonHP + " HP remaining.");
+                if (Random.Range(1, 11) == 1) {
+                    dragonHP = 0;
+                    Debug.Log("You killed the dragon with your special attack! It has " + dragonHP + " HP remaining.");
+                    HandleGameOver();
                 } else {
-                    playerHP -= 2;
-                    Debug.Log("You missed with your special attack and hurt yourself! You have " + playerHP + " HP remaining.");
+                    Debug.Log("You missed with your special attack.");
                 }
 
                 HandleAITurn();
