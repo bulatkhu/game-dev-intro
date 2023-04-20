@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleField : MonoBehaviour {
-    // Initialize Health and states of the game
     int playerHP = 10;
     int dragonHP = 10;
     bool dragonCharge = false;
     bool finished = false;
     bool defend = false;
 
-    // Start is called before the first frame update
     void Start() {
         Debug.Log("A dragon is attacking you! Use \"1\" to attack. Use \"2\" to heal yourself. Use \"3\" to defend and decrease the next incoming damage. And with \"4\" you use a special attack that can either deal massive damage to the dragon or miss and leave you vulnerable.");
     }
@@ -93,9 +91,7 @@ public class BattleField : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void Update() {
-        // restart the game
         if (Input.GetKeyUp(KeyCode.Space) && finished == true) {
             playerHP = 10;
             dragonHP = 10;
@@ -106,19 +102,14 @@ public class BattleField : MonoBehaviour {
         }
 
         if (finished == false) {
-            // Attack
             this.HandleAttack();
 
-            // Heal
             this.HandleHeal();
 
-            // Defend
             this.HandleDefend();
 
-            // Special Attack
             this.HandleSpecialAttack();
 
-            // Game Over
             this.HandleGameOver();
         }
     }
